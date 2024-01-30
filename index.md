@@ -2,7 +2,7 @@
 
 ## Part 1: Web Server: ChatServer
 
-**ChatServer.java Code:**
+**```ChatServer.java``` Code:**
 
 ```
 import java.io.BufferedWriter;
@@ -64,7 +64,7 @@ class ChatServer {
 }
 ```
 
-**Server.java Code:**
+**```Server.java``` Code:**
 
 ```
 // A simple web server using Java's built-in HttpServer
@@ -127,6 +127,45 @@ public class Server {
 
 ![Image](1st.png)
 
+### Which methods in your code are called?
+
+The methods called in the code include ```handle()```, ```start()```, ```main()```, and ```handleRequest()```.
+
+### What are the relevant arguments to those methods, and the values of any relevant fields of the class?
+
+Arguments to Methods:
+
+```handle()```: ```HttpExchange exchange``` which represents the Http request and response 
+```start()```: ```int port, URLHandler handler``` which requires the port and handler as parameters within the method 
+```handleRequest()```: ```URI url``` which represents the URL
+```main()```: ```String[] args``` which takes in the argument such as the port and text file path
+
+Fields of class ```StringHandler```:
+
+```List<String> lines```
+```String path```
+```String query = url.getQuery()```
+```String user``` user of the query such as "jpoltz" and "yash"
+```String statement``` which is the statement made by the user 
+
+Fields of class ```ServerHttpHandler```:
+
+```String ret```
+```String response```
+
+Fields of class ```Server```:
+
+```Http Server``` created with the port 
+
+Fields of class ```ChatServer```:
+
+```main()```: ```int port = args[0]``` which is the first argument is the port, provided when the code is compiled
+
+### How do the values of any relevant fields of the class change from this specific request? If no values got changed, explain why.
+
+The list ```lines``` is modified when the query request being made is valid. When valid, a new statement or message is appended to the ```lines``` list. This this
+list is later returned. When the query of the website is modified in a valid way this ```lines``` list is modified as well. 
+
 
 **Explanation:**
 The method in my code that is called is the ```handle``` method in the ```ServerHttpHandler``` class which implements the ```HttpHandler``` interface. 
@@ -139,6 +178,18 @@ list is later returned.
 
 ![Image](2nd.png)
 
+The methods called in the code include ```handleRequest()```.
+
+### What are the relevant arguments to those methods, and the values of any relevant fields of the class?
+
+The relative argument to the ```handleRequest()``` method is the ```URI url```, which is the url of the website. The fields of ```statement``` and ```user``` are changed
+to the values given in a valid query request. 
+
+### How do the values of any relevant fields of the class change from this specific request? If no values got changed, explain why.
+
+The list ```lines``` is modified when the query request being made is valid. When valid, a new statement or message is appended to the ```lines``` list. This this
+list is later returned. When the query of the website is modified in a valid way this ```lines``` list is modified as well. 
+
 
 **Explanation:**
 The method in my code that is called is the ```handle``` method in the ```ServerHttpHandler``` class which implements the ```HttpHandler``` interface. 
@@ -147,18 +198,29 @@ the ```URLHandler handler``` in the ```ServerHttpHandler```. This is an instance
 in ```StringHandler```. These represent the the lines read from a file path. If the request is valid, then the new statement or message is added to the ```lines``` list. Then this 
 list is later returned. 
 
+## Part 2: SSH Keys
+
 
 **Private Key Absolute Path using ```ls```:**
 
-![Image]((public:private.png))
+![Image](public.png)
 
 **Public Key Absolute Path using ```ls```:**
 
-![Image](public:private.png)
+![Image](public.png)
 
-**Login without using password:**
+**Login without using password using ```ls```:**
 
 ![Image](login.png)
+
+## Part 3: Takeaways and Overall Learning from Labs 2 & 3
+
+
+**Thing Learned:**
+
+One thing that I learned from lab these past 2 weeks is setting up my Visual Studio code and specifically using the teriminal within my local device or even 
+Visual Studio Code itself to generate SSH keys. I've learned about SSH key generation and configuration to allow for effortless, secure logins from local device, 
+Visual Studio Code or EdStem to the @ieng6 server. I also gained knowledge about ports, localhosts, and how to setup a localhost to run Java applications and files.
 
 
 
