@@ -125,4 +125,36 @@ public class Server {
 
 **First add message screenshot:**
 
+![Image](1st.png)
+
+
+**Explanation:**
+The method in my code that is called is the ```handle``` method in the ```ServerHttpHandler``` class which implements the ```HttpHandler``` interface. 
+The relevant argument to that method is the ```HttpExchange exchange``` which represents the Http request and response. Some of the relevant fields include 
+the ```URLHandler handler``` in the ```ServerHttpHandler```. This is an instance of the ```StringHandler```. Another relevant field is the ```List<String> lines``` and ```String path```
+in ```StringHandler```. These represent the the lines read from a file path. If the request is valid, then the new statement or message is added to the ```lines``` list. Then this 
+list is later returned. 
+
 **Second add message screenshot:**
+
+![Image](2nd.png)
+
+
+**Explanation:**
+The method in my code that is called is the ```handle``` method in the ```ServerHttpHandler``` class which implements the ```HttpHandler``` interface. 
+The relevant argument to that method is the ```HttpExchange exchange``` which represents the Http request and response. Some of the relevant fields include 
+the ```URLHandler handler``` in the ```ServerHttpHandler```. This is an instance of the ```StringHandler```. Another relevant field is the ```List<String> lines``` and ```String path```
+in ```StringHandler```. These represent the the lines read from a file path. If the request is valid, then the new statement or message is added to the ```lines``` list. Then this 
+list is later returned. 
+
+
+**Private Key Absolute Path using ```ls```:**
+
+**Public Key Absolute Path using ```ls```:**
+
+**Login without using password:**
+
+
+
+
+
