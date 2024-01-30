@@ -150,11 +150,11 @@ list is later returned.
 
 **Private Key Absolute Path using ```ls```:**
 
-![Image]((public/private.png))
+![Image]((public:private.png))
 
 **Public Key Absolute Path using ```ls```:**
 
-![Image](
+![Image](public:private.png)
 
 **Login without using password:**
 
