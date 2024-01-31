@@ -207,7 +207,7 @@ list is later returned.
 
 **Private Key Absolute Path using ```ls```:**
 
-![Image](public1.png)
+![Image](public.png)
 
 **Login without using password using ```ls```:**
 
