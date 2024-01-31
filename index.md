@@ -201,13 +201,13 @@ list is later returned.
 ## Part 2: SSH Keys
 
 
-**Private Key Absolute Path using ```ls```:**
-
-![Image](public.png)
-
 **Public Key Absolute Path using ```ls```:**
 
-![Image](public.png)
+![Image](public1.png)
+
+**Private Key Absolute Path using ```ls```:**
+
+![Image](public1.png)
 
 **Login without using password using ```ls```:**
 
