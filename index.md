@@ -5,63 +5,69 @@
 **```ChatServer.java``` Code:**
 
 ```
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
 class StringHandler implements URLHandler {
-  List<String> lines;
-  String path;
-  StringHandler(String path) throws IOException {
-    this.path = path;
-    this.lines = Files.readAllLines(Paths.get(path));
-  }
-  public String handleRequest(URI url) throws IOException {
-    String query = url.getQuery();
-    if(url.getPath().equals("/add-message")) {
-      if(query.startsWith("s=")) {
-        String[] args = query.split("&");
-        String[] userArr = args[1].split("=");
-        String user = userArr[1].replace("+", " ");
-    
-        String[] valueArr = args[0].split("=");
-        String statement = valueArr[1].replace("+", " ");
+    List<String> lines;
+    String path;
 
-        this.lines.add(user + ": " + statement);
-    
-        return String.join("\n", lines) + "\n";
-      }
-      else {
-        return "requires a parameter";
-      }
+    StringHandler(String path) throws IOException {
+        this.path = path;
+        this.lines = Files.readAllLines(Paths.get(path));
     }
-    else {
-      return String.join("\n", lines) + "\n";
+
+    public String handleRequest(URI url) throws IOException {
+        String query = url.getQuery();
+        if (url.getPath().equals("/add-message")) {
+            if (query.contains("user=")) { // Check if the query contains "user="
+                String[] args = query.split("&");
+                String user = null;
+                String statement = null;
+                for (String arg : args) {
+                    String[] parts = arg.split("=");
+                    if (parts.length == 2) {
+                        if (parts[0].equals("user")) {
+                            user = parts[1].replace("+", " ");
+                        } else if (parts[0].equals("s")) {
+                            statement = parts[1].replace("+", " ");
+                        }
+                    }
+                }
+                if (user != null && statement != null) {
+                    this.lines.add(user + ": " + statement);
+                    return String.join("\n", lines) + "\n";
+                } else {
+                    return "Invalid parameters";
+                }
+            } else {
+                return "Requires 'user' parameter";
+            }
+        } else {
+            return String.join("\n", lines) + "\n";
+        }
     }
-  }
 }
 
 class ChatServer {
-  public static void main(String[] args) throws IOException {
-    if(args.length == 0){
-      System.out.println("Missing both port number and file path! For the first argument (port number), try any number between 1024 to 49151. For the second argument (file path), give a path to a text file.");
-      return;
-    }
-    if(args.length == 1){
-      System.out.println("Missing port number or file path! For the first argument (port number), try any number between 1024 to 49151. For the second argument (file path), give a path to a text file.");
-      return;
-    }
+    public static void main(String[] args) throws IOException {
+        if (args.length == 0) {
+            System.out.println("Missing both port number and file path! For the first argument (port number), try any number between 1024 to 49151. For the second argument (file path), give a path to a text file.");
+            return;
+        }
+        if (args.length == 1) {
+            System.out.println("Missing port number or file path! For the first argument (port number), try any number between 1024 to 49151. For the second argument (file path), give a path to a text file.");
+            return;
+        }
 
-    int port = Integer.parseInt(args[0]);
+        int port = Integer.parseInt(args[0]);
 
-    Server.start(port, new StringHandler(args[1]));
-  }
-}
+        Server.start(port, new StringHandler(args[1]));
+    }
+    }
 ```
 
 
@@ -150,7 +156,7 @@ list is later returned.
 
 **Private Key Absolute Path using ```ls```:** /Users/nimaikasibatla/.ssh/id_rsa
 
-![Image](newprivate.png)
+![Image](newprivate1.png)
 
 **Login without using password using ```ls```:**
 
