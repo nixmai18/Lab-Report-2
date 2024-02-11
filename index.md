@@ -146,11 +146,11 @@ list is later returned.
 
 **Public Key Absolute Path using ```ls```:** /home/linux/ieng6/oce/3g/nkasibatla/.ssh/authorized_keys
 
-![Image](public1.png)
+![Image](newpublic.png)
 
 **Private Key Absolute Path using ```ls```:** /Users/nimaikasibatla/.ssh/id_rsa
 
-![Image](public.png)
+![Image](newprivate.png)
 
 **Login without using password using ```ls```:**
 
